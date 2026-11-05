@@ -113,8 +113,8 @@ img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .voice-section {
   min-height: auto;
   background:
-    linear-gradient(90deg, rgba(23,21,18,.88), rgba(23,21,18,.52)),
-    url("assets/aspirasi-background.jpg") center 55% / cover no-repeat;
+    linear-gradient(90deg, rgba(23,21,18,.72), rgba(23,21,18,.38)),
+    url("assets/source-4.jpg") center 55% / cover no-repeat;
   padding: 8vw 5vw;
   position: relative;
   overflow: hidden;
