@@ -53,6 +53,7 @@ const onScroll = () => {
       poster.style.rotate = `${Math.max(-3, Math.min(3, centerOffset * 8 * direction))}deg`;
     });
   }
+  document.querySelector('.back-to-top')?.classList.toggle('is-visible', scrollY > viewport);
 };
 
 window.addEventListener('scroll', onScroll, { passive: true });
@@ -64,6 +65,24 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     if (!target) return;
     event.preventDefault();
     target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+  });
+});
+
+const menuToggle = document.querySelector('.menu-toggle');
+const mobileMenu = document.querySelector('.mobile-menu');
+
+menuToggle?.addEventListener('click', () => {
+  const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+  menuToggle.setAttribute('aria-expanded', String(!isOpen));
+  menuToggle.setAttribute('aria-label', isOpen ? 'Buka navigasi' : 'Tutup navigasi');
+  mobileMenu.classList.toggle('is-open', !isOpen);
+});
+
+mobileMenu?.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => {
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Buka navigasi');
+    mobileMenu.classList.remove('is-open');
   });
 });
 
